@@ -1,0 +1,31 @@
+buildscript{ //플러그인의 의존성 관리
+    ext { //ext 는 전역 변수 설정하겠다
+        springBootVersion = '2.1.7.RELEASE' //스프링 부트 플러그인의 버전 설정
+    }
+    repositories { //라이브러리를 어떤 원격 저장소에서 받을 것인지를 결정
+        mavenCentral() // 예전부터 많이 사용하지만 본인이 만든 라이브러리를 업로드하는데 많은 과정과 설정 필요
+        jcenter() //라이브러리 업로드가 쉬우며 자동으로 mavenCentral에 업로드 되도록 설정 가능
+    }
+    dependencies {//프로젝트 개발에 필요한 의존성을 설정
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+// --------- 플러그인 의존성 설정 ----------------- //
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+//-----------------------------------------------//
+group 'org.dolmac'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+// --------------프로젝트 개발에 필요한 의존성들 선언하는 곳 --------------------- //
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+// ------------------------------------------------------------------------ //
